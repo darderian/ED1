@@ -1,4 +1,4 @@
-package TrabalhoFinal;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ public class Main {
         GeradorAleatorio gerador = new GeradorAleatorio();
 
         // Gerar 10 pontos aleatórios com coordenadas no intervalo [0, 20)
-        List<Ponto> pontosGerados = gerador.gerarPontos(4, 100.0);
+        List<Ponto> pontosGerados = gerador.gerarPontos(6, 10.0);
 
         // Criação dos clusters iniciais
         List<ArvBinaria> listaClusters = new ArrayList<>();
@@ -23,6 +23,6 @@ public class Main {
 
         // Exibição da árvore de clusterização
         System.out.println("Estrutura da árvore de clusterização:");
-        arvoreFinal.mostra();
+        arvoreFinal.mostra("");
     }
 }

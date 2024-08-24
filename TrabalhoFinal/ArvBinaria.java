@@ -1,5 +1,3 @@
-package TrabalhoFinal;
-
 import java.util.List;
 
 public class ArvBinaria {
@@ -12,42 +10,37 @@ public class ArvBinaria {
         this.dir = null;
     }
 
-    public Cluster retornaCluster() { return cluster; }
-    public ArvBinaria retornaEsq() { return esq; }
-    public ArvBinaria retornaDir() { return dir; }
+    public Cluster retornaCluster(){return cluster;}
 
-    public void defineRaiz(Cluster raiz) { cluster = raiz; }
-    public void defineDir(ArvBinaria filho) { dir = filho; }
-    public void defineEsq(ArvBinaria filho) { esq = filho; }
+    public ArvBinaria retornaEsq(){return esq;}
+    public ArvBinaria retornaDir(){return dir;}
+    public void defineRaiz(Cluster raiz){cluster = raiz;}
+    public void defineDir(ArvBinaria filho){dir = filho;}
+    public void defineEsq(ArvBinaria filho){esq = filho;}
 
-    public static ArvBinaria clusterizar(List<ArvBinaria> clusters) {
-        while (clusters.size() > 1) {
+    public static ArvBinaria clusterizar(List<ArvBinaria> cluster){
+        while(cluster.size() > 1){
             ArvBinaria noA = null;
             ArvBinaria noB = null;
             double menorDistancia = Double.MAX_VALUE;
-
-            // Encontrar os dois clusters mais próximos
-            for (int i = 0; i < clusters.size(); i++) {
-                for (int j = i + 1; j < clusters.size(); j++) {
-                    double distancia = Ponto.distancia(
-                            clusters.get(i).retornaCluster().getCentroide(),
-                            clusters.get(j).retornaCluster().getCentroide()
-                    );
-                    if (distancia < menorDistancia) {
+            for (int i = 0; i < cluster.size(); i++){
+                for (int j = i + 1; j < cluster.size(); j++){
+                    double distancia = Ponto.distancia(cluster.get(i).retornaCluster().getCentroide(), cluster.get(j).retornaCluster().getCentroide());
+                    if (distancia < menorDistancia){
                         menorDistancia = distancia;
-                        noA = clusters.get(i);
-                        noB = clusters.get(j);
+                        noA = cluster.get(i);
+                        noB =  cluster.get(j);
                     }
                 }
             }
-
-            // Combinar os dois clusters mais próximos
-            ArvBinaria novoNo = combinarClusters(noA, noB);
-            clusters.remove(noA);
-            clusters.remove(noB);
-            clusters.add(novoNo);
+            ArvBinaria novoNo = combinarClusters(noA,noB);
+            cluster.remove(noA);
+            cluster.remove(noB);
+            cluster.add(novoNo);
         }
-        return clusters.get(0);
+        return cluster.get(0);
+
+
     }
 
     public static ArvBinaria combinarClusters(ArvBinaria noA, ArvBinaria noB) {
@@ -61,22 +54,30 @@ public class ArvBinaria {
         return novoNo;
     }
 
-    public void mostra() {
-        System.out.println("Cluster com centroide em: (" + cluster.getCentroide().getX() + ", " + cluster.getCentroide().getY() + ")");
-        System.out.print("Pontos: ");
+
+    public void mostra(String prefixo) {
+        System.out.println(prefixo + "Cluster com centroide em: (" + Math.round(( cluster.getCentroide().getX() * 100.0) /100.0) + ", " + Math.round(( cluster.getCentroide().getY() * 100.0) /100.0) + ")");
+
+        System.out.print(prefixo + "Pontos: ");
         for (Ponto ponto : cluster.getPontos()) {
-            System.out.print("(" + ponto.getX() + ", " + ponto.getY() + ") ");
+            System.out.print("(" + Math.round((ponto.getX() * 100.0)/100.0) + ", " + Math.round((ponto.getY() * 100.0)/100.0) + ") ");
         }
         System.out.println();
 
+
         if (esq != null) {
-            System.out.println("Filho Esquerdo:");
-            esq.mostra();
+            System.out.println(prefixo + "Filho Esquerdo:");
+            esq.mostra(prefixo + "    ");
         }
 
         if (dir != null) {
-            System.out.println("Filho Direito:");
-            dir.mostra();
+            System.out.println(prefixo + "Filho Direito:");
+            dir.mostra(prefixo + "    ");
         }
     }
+
+
+
+
+
 }
