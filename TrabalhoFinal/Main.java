@@ -11,24 +11,37 @@ public class Main
         GeradorAleatorio gerador = new GeradorAleatorio();
         for(int n:numPontos)
         {
+            //gera pontos e registra 
+            List<Ponto> pontos = gerador.gerarPontos(n);
+            //inicializa o temporizador de teste
             long totalNaiveTimeNs = 0;
-            
-
-            
+            //roda dez vezes para conseguir uma media
             for (int i = 0; i < 10; i++)
             {
-                List<Ponto> pontos = gerador.gerarPontos(n);
+                if(i!=0)pontos = gerador.gerarPontos(n);
+                if(i==9)
+                {
+                    System.out.println("\nLista de pontos:");
+                    int aux=1;
+                    for(Ponto ponto :pontos)
+                    {
+                        System.out.println(aux+"º"+ponto);
+                        aux++;
+                    }
+                    System.out.println("\nPressione Enter para continuar ");
+                    teclado.nextLine();  // Aguarda o usuário pressionar Enter
+                }
                 long startTime = System.nanoTime();
                 ClusterizacaoHierarquicaNaive.clusteriza(pontos,i);
                 long endTime = System.nanoTime();
                 totalNaiveTimeNs += (endTime - startTime);
-                if(i<9)System.out.println("Teste nº:"+(i+1)+"\nTempo de execução Naive: " + (endTime - startTime)/10 + " ns (" + (endTime - startTime)/ 1_000_000.0 + " ms)");
+                if(i<9)System.out.println("\nTempo do Teste nº"+(i+1)+": "+ (endTime - startTime)/10 + " ns (" + (endTime - startTime)/ 1_000_000.0 + " ms)");
             }
             long averageNaiveTimeNs = totalNaiveTimeNs / 10;
             double averageNaiveTimeMs = averageNaiveTimeNs / 1_000_000.0;
-            System.out.println("Tempo médio de execução Naive: " + averageNaiveTimeNs + " ns (" + averageNaiveTimeMs + " ms)");
-            
-            
+            System.out.println("\nTempo médio de execução Naive: " + averageNaiveTimeNs + " ns (" + averageNaiveTimeMs + " ms)");
+            System.out.println("\nCluster Final:"+pontos);
+
             System.out.println("\nPressione Enter para continuar para o próximo valor de n...");
             teclado.nextLine();  // Aguarda o usuário pressionar Enter
         }   

@@ -1,8 +1,8 @@
 import java.util.Objects;
 
 public class Ponto {
-    private double x;
-    private double y;
+    private final double x;
+    private final double y;
 
     public Ponto()
     {

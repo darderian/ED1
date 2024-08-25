@@ -21,8 +21,7 @@ public class ClusterizacaoHierarquicaNaive
             }
             if(iteraçãoTeste==9) System.out.println("\n"+(count+1)+"ºiteração\nPar de menor distancia: \nponto A:"+PontoA+"\nponto B:"+PontoB);
             aux=Cluster.calculaCentroide(PontoA, PontoB);
-            if(iteraçãoTeste==9&&pontos.size()>1)System.out.println("\nnovo cluster criado:"+aux+"\n-----------------------------------------");
-            else if(iteraçãoTeste==9&&pontos.size()==1)System.out.println("\nUltimo cluster criado:"+aux+"\n-----------------------------------------");
+            if(iteraçãoTeste==9)System.out.println("\nnovo cluster criado:"+aux+"\n-----------------------------------------");
             pontos.remove(PontoA);
             pontos.remove(PontoB);
             pontos.add(aux);
@@ -31,26 +30,4 @@ public class ClusterizacaoHierarquicaNaive
        
         
     }
-    /*public static ArvBinaria combinarClusters(ArvBinaria noA, ArvBinaria noB) {
-        Cluster novoCluster = new Cluster(noA.retornaCluster().getCentroide());
-        novoCluster.uneClusters(noB.retornaCluster());
-
-        ArvBinaria novoNo = new ArvBinaria(novoCluster);
-        novoNo.defineEsq(noA);
-        novoNo.defineDir(noB);
-
-        return novoNo;
-    }
-    public static double[] calcularCentroid(double[][] pontos) {
-        double[] centroid = new double[pontos[0].length];
-        for (double[] ponto : pontos) {
-            for (int i = 0; i < ponto.length; i++) {
-                centroid[i] += ponto[i];
-            }
-        }
-        for (int i = 0; i < centroid.length; i++) {
-            centroid[i] /= pontos.length;
-        }
-        return centroid;
-    }*/
 }
