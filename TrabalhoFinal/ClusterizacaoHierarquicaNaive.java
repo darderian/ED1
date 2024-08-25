@@ -1,10 +1,10 @@
 import java.util.*;
 public class ClusterizacaoHierarquicaNaive 
 {
-    public static void clusteriza(List<Ponto> pontos)
+    public static void clusteriza(List<Ponto> pontos,int iteraçãoTeste)
     {
         int count=0; 
-        System.out.println("\n-----------------------------------------");
+       if(iteraçãoTeste==9) System.out.println("\n-----------------------------------------");
         while(pontos.size() > 1)
         {
             double menorDistancia = Double.MAX_VALUE;
@@ -19,9 +19,10 @@ public class ClusterizacaoHierarquicaNaive
                     }
                 }
             }
-            System.out.println("\n"+count+"ºiteração\nPar de menor distancia: \nponto A:"+PontoA+"\nponto B:"+PontoB);
+            if(iteraçãoTeste==9) System.out.println("\n"+(count+1)+"ºiteração\nPar de menor distancia: \nponto A:"+PontoA+"\nponto B:"+PontoB);
             aux=Cluster.calculaCentroide(PontoA, PontoB);
-            System.out.println("\nnovo cluster criado:"+aux+"\n-----------------------------------------");
+            if(iteraçãoTeste==9&&pontos.size()>1)System.out.println("\nnovo cluster criado:"+aux+"\n-----------------------------------------");
+            else if(iteraçãoTeste==9&&pontos.size()==1)System.out.println("\nUltimo cluster criado:"+aux+"\n-----------------------------------------");
             pontos.remove(PontoA);
             pontos.remove(PontoB);
             pontos.add(aux);

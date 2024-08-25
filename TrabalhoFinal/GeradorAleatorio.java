@@ -15,9 +15,7 @@ public class GeradorAleatorio {
         List<Ponto> pontos = new ArrayList<>();
         for (int i = 0; i < quantidade; i++) {
             double x = arredondar(random.nextDouble() * intervaloMaximo, 2);
-            System.out.print(x);
             double y = arredondar(random.nextDouble() * intervaloMaximo, 2);
-            System.out.print(y);
             pontos.add(new Ponto(x, y));
         }
         return pontos;
