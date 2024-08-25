@@ -1,37 +1,24 @@
-import java.util.ArrayList;
-public class Cluster {
-    private ArrayList<Ponto> pontos;
-    private Ponto centroide;
+public class Cluster 
+{
+    private Ponto centroide,PontoA,PontoB;
 
-    public Cluster(Ponto pontoInicial) {
-        this.pontos = new ArrayList<>();
-        this.pontos.add(pontoInicial);
-        this.centroide = pontoInicial;
+    public Cluster(Ponto A,Ponto B) 
+    {
+        this.PontoA=A;
+        this.PontoB=B;
+        this.centroide =calculaCentroide(A, B) ;
     }
 
-    public ArrayList<Ponto> getPontos() {
-        return pontos;
-    }
-
-    public Ponto getCentroide() {
+    public Ponto getcentroide() 
+    {
         return centroide;
     }
 
-    public void recalculaCentroide(){
-        double somaX = 0;
-        double somaY = 0;
-        for (Ponto ponto:pontos) {
-            somaX += ponto.getX();
-            somaY += ponto.getY();
-        }
-        double novoX = Math.round((somaX/ pontos.size()) * 100.0) /100.0;
-        double novoY = Math.round((somaY/ pontos.size()) * 100.0) /100.0;
-        this.centroide = new Ponto(novoX, novoY);
+    public static Ponto calculaCentroide(Ponto A, Ponto B) {
+        double novoX = GeradorAleatorio.arredondar((A.getX() + B.getX()) / 2, 2);
+        double novoY = GeradorAleatorio.arredondar((A.getY() + B.getY()) / 2, 2);
+    
+        Ponto centroid = new Ponto(novoX, novoY);
+        return centroid;
     }
-
-    public void uneClusters(Cluster cluster2){
-        this.pontos.addAll(cluster2.getPontos());
-        recalculaCentroide();
-    }
-
 }

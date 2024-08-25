@@ -4,19 +4,37 @@ public class ArvBinaria {
     private Cluster cluster;
     private ArvBinaria esq, dir;
 
-    public ArvBinaria(Cluster cluster) {
+    public ArvBinaria(Cluster cluster) 
+    {
         this.cluster = cluster;
         this.esq = null;
         this.dir = null;
     }
 
-    public Cluster retornaCluster(){return cluster;}
-
-    public ArvBinaria retornaEsq(){return esq;}
-    public ArvBinaria retornaDir(){return dir;}
-    public void defineRaiz(Cluster raiz){cluster = raiz;}
-    public void defineDir(ArvBinaria filho){dir = filho;}
-    public void defineEsq(ArvBinaria filho){esq = filho;}
+    public Cluster retornaCluster()
+    {
+        return cluster;
+    }
+    public ArvBinaria retornaEsq()
+    {
+        return esq;
+    }
+    public ArvBinaria retornaDir()
+    {
+        return dir;
+    }
+    public void defineRaiz(Cluster raiz)
+    {
+        cluster = raiz;
+    }
+    public void defineDir(ArvBinaria filho)
+    {
+        dir = filho;
+    }
+    public void defineEsq(ArvBinaria filho)
+    {
+        esq = filho;
+    }
 
     public static ArvBinaria clusterizar(List<ArvBinaria> cluster){
         while(cluster.size() > 1){

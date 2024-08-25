@@ -1,22 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.*;
 
 public class GeradorAleatorio {
 
     private Random random;
+    private final int intervaloMaximo =100;/// define o maximo que poder ser gerado
 
     public GeradorAleatorio() {
         this.random = new Random();
     }
 
-    public List<Ponto> gerarPontos(int quantidade, double intervaloMaximo) {
+    public List<Ponto> gerarPontos(int quantidade) {
         List<Ponto> pontos = new ArrayList<>();
         for (int i = 0; i < quantidade; i++) {
-            double x = random.nextDouble() * intervaloMaximo;
-            double y = random.nextDouble() * intervaloMaximo;
+            double x = arredondar(random.nextDouble() * intervaloMaximo, 2);
+            System.out.print(x);
+            double y = arredondar(random.nextDouble() * intervaloMaximo, 2);
+            System.out.print(y);
             pontos.add(new Ponto(x, y));
         }
         return pontos;
+    }
+    public static double arredondar(double valor, int casasDecimais) {
+        BigDecimal bd = new BigDecimal(Double.toString(valor));
+        bd = bd.setScale(casasDecimais, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
