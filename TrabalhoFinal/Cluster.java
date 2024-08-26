@@ -1,7 +1,7 @@
 
 public class Cluster {
 
-    private Ponto centroide;
+    private final Ponto centroide;
     private Cluster left;
     private Cluster right;
 

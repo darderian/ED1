@@ -28,4 +28,3 @@ public class ClusterHPrioridade {
         return clusters.get(0); // Retorna o cluster resultante que é a raiz da árvore
     }
 }
-

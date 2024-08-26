@@ -1,6 +1,8 @@
+
 import java.util.*;
 
 public class FilaPrioridade {
+
     private final PriorityQueue<ClusterDistancia> fila;
 
     public FilaPrioridade() {
@@ -23,16 +25,16 @@ public class FilaPrioridade {
     public void atualizarDistancias(Cluster cluster) {
         // Criar uma nova lista de distâncias a serem atualizadas
         List<ClusterDistancia> distanciasAtualizadas = new ArrayList<>();
-        
+
         for (ClusterDistancia cd : fila) {
             if (cd.getCluster1().equals(cluster) || cd.getCluster2().equals(cluster)) {
                 distanciasAtualizadas.add(cd);
             }
         }
-        
+
         // Remover as distâncias antigas da fila
         fila.removeAll(distanciasAtualizadas);
-        
+
         // Recalcular as distâncias e adicionar as novas entradas na fila
         for (ClusterDistancia cd : distanciasAtualizadas) {
             Cluster cluster1 = cd.getCluster1();
@@ -63,6 +65,7 @@ public class FilaPrioridade {
 
     // Classe interna para representar a distância entre dois clusters
     public static class ClusterDistancia {
+
         private final Cluster cluster1;
         private final Cluster cluster2;
         private final double distancia;
