@@ -1,3 +1,4 @@
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -5,7 +6,9 @@ import java.util.*;
 public class GeradorAleatorio {
 
     private final Random random;
-    private final int intervaloMaximo =100;/// define o maximo que poder ser gerado
+    private final int intervaloMaximo = 100;
+
+    /// define o maximo que poder ser gerado
 
     public GeradorAleatorio() {
         this.random = new Random();
@@ -20,6 +23,7 @@ public class GeradorAleatorio {
         }
         return pontos;
     }
+
     public static double arredondar(double valor, int casasDecimais) {
         BigDecimal bd = new BigDecimal(Double.toString(valor));
         bd = bd.setScale(casasDecimais, RoundingMode.HALF_UP);

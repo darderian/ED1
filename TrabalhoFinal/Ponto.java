@@ -1,14 +1,16 @@
+
 import java.util.Objects;
 
 public class Ponto {
+
     private final double x;
     private final double y;
 
-    public Ponto()
-    {
+    public Ponto() {
         this.x = 0;
         this.y = 0;
     }
+
     public Ponto(double x, double y) {
         this.x = x;
         this.y = y;
@@ -27,6 +29,15 @@ public class Ponto {
         double dy = p1.getY() - p2.getY();
         return Math.sqrt((dx * dx) + (dy * dy));
     }
+
+    public static Ponto calculaCentroide(Ponto A, Ponto B) {
+        double novoX = GeradorAleatorio.arredondar((A.getX() + B.getX()) / 2, 2);
+        double novoY = GeradorAleatorio.arredondar((A.getY() + B.getY()) / 2, 2);
+
+        Ponto centroid = new Ponto(novoX, novoY);
+        return centroid;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -46,9 +57,9 @@ public class Ponto {
 
     @Override
     public String toString() {
-        return "Ponto{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "Ponto{"
+                + "x=" + x
+                + ", y=" + y
+                + '}';
     }
 }
