@@ -52,7 +52,14 @@ public class Cluster {
     }
 
     public void imprimirArvore() {
+        // Imprime a barra de nível no início
+        System.out.println("|---0---1---2---3---4---5---6---7---8---9---10---11---12---13---14---15---16---17---18---19---20");
+
+        // Inicia a impressão da árvore
         imprimirArvore("", true, "Raiz");
+
+        // Imprime a barra de nível no final
+        System.out.println("----0---1---2---3---4---5---6---7---8---9---10---11---12---13---14---15---16---17---18---19---20");
     }
 
     // Método privado para impressão hierárquica da árvore
@@ -96,4 +103,8 @@ public class Cluster {
         }
     }
 
+    // Método para calcular a distância entre o centroide deste cluster e o centroide de outro cluster
+    public double calcularDistanciaPara(Cluster outroCluster) {
+        return Ponto.distancia(this.getCentroide(), outroCluster.getCentroide());
+    }
 }
