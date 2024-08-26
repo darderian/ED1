@@ -45,6 +45,7 @@ public class Main
             System.out.println("\nPressione Enter para continuar para o próximo valor de n...");
             teclado.nextLine();  // Aguarda o usuário pressionar Enter
         }   
+        teclado.close();
     }
            
 }

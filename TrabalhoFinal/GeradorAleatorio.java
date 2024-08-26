@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GeradorAleatorio {
 
-    private Random random;
+    private final Random random;
     private final int intervaloMaximo =100;/// define o maximo que poder ser gerado
 
     public GeradorAleatorio() {
