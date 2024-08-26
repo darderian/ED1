@@ -24,7 +24,7 @@ public class Main {
                     pontos = gerador.gerarPontos(n);
                 }
 
-                if (j == 9&&n<500) {
+                if (j == 9 && n < 500) {
                     System.out.println("\nLista de pontos:");
                     int aux = 1;
                     for (Cluster ponto : pontos) {
@@ -58,29 +58,31 @@ public class Main {
             // Armazenando os tempos médios nos arrays
             temposMediosNaive[i] = averageNaiveTimeMs;
             temposMediosFila[i] = averageFilaTimeMs;
+            if (n < 200) {
+                System.out.println("\nPressione Enter para continuar ");
+                teclado.nextLine();  // Aguarda o usuário pressionar Enter
 
-            System.out.println("\nPressione Enter para continuar ");
-            teclado.nextLine();  // Aguarda o usuário pressionar Enter
+                System.out.println("\nÁrvore de Clusters (Naive):");
+                rootNaive.imprimirArvore();
 
-            System.out.println("\nÁrvore de Clusters (Naive):");
-            rootNaive.imprimirArvore();
+                long averageNaiveTimeNs = totalNaiveTimeNs / 10;
+                averageNaiveTimeMs = averageNaiveTimeNs / 1_000_000.0;
+                System.out.println("\nTempo médio de execução Naive com n." + n + " pontos: " + averageNaiveTimeNs + " ns (" + averageNaiveTimeMs + " ms)");
+                System.out.println("\nPressione Enter para continuar para a a arvore com fila ");
+                teclado.nextLine();  // Aguarda o usuário pressionar Enter
 
-            long averageNaiveTimeNs = totalNaiveTimeNs / 10;
-            averageNaiveTimeMs = averageNaiveTimeNs / 1_000_000.0;
-            System.out.println("\nTempo médio de execução Naive com n." + n + " pontos: " + averageNaiveTimeNs + " ns (" + averageNaiveTimeMs + " ms)");
-            System.out.println("\nPressione Enter para continuar para a a arvore com fila ");
-            teclado.nextLine();  // Aguarda o usuário pressionar Enter
+                rootFila.imprimirArvore();
 
-            rootFila.imprimirArvore();
+                averageNaiveTimeNs = totalFilaTimeNs / 10;
+                averageNaiveTimeMs = averageNaiveTimeNs / 1_000_000.0;
+                System.out.println("\nTempo médio de execução Naive com n." + n + " pontos: " + averageNaiveTimeNs + " ns (" + averageNaiveTimeMs + " ms)");
 
-            averageNaiveTimeNs = totalFilaTimeNs / 10;
-            averageNaiveTimeMs = averageNaiveTimeNs / 1_000_000.0;
-            System.out.println("\nTempo médio de execução Naive com n." + n + " pontos: " + averageNaiveTimeNs + " ns (" + averageNaiveTimeMs + " ms)");
+                System.out.println("\nPressione Enter para continuar para o próximo valor de n...");
+                teclado.nextLine();  // Aguarda o usuário pressionar Enter
 
-            System.out.println("\nPressione Enter para continuar para o próximo valor de n...");
-            teclado.nextLine();  // Aguarda o usuário pressionar Enter
+                System.out.println("\n-----------------------------\n");
+            }
 
-            System.out.println("\n-----------------------------\n");
         }
 
         // Exibindo o relatório unificado
