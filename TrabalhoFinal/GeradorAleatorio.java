@@ -14,12 +14,12 @@ public class GeradorAleatorio {
         this.random = new Random();
     }
 
-    public List<Ponto> gerarPontos(int quantidade) {
-        List<Ponto> pontos = new ArrayList<>();
+    public List<Cluster> gerarPontos(int quantidade) {
+        List<Cluster> pontos = new ArrayList<>();
         for (int i = 0; i < quantidade; i++) {
             double x = arredondar(random.nextDouble() * intervaloMaximo, 2);
             double y = arredondar(random.nextDouble() * intervaloMaximo, 2);
-            pontos.add(new Ponto(x, y));
+            pontos.add(new Cluster(new Ponto(x, y)));
         }
         return pontos;
     }
