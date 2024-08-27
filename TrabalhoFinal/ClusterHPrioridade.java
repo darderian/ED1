@@ -9,7 +9,6 @@ public class ClusterHPrioridade {
 
         while (clusters.size() > 1) {
             FilaPrioridade.ClusterDistancia menorDistancia = filaPrioridade.remover();
-
             Cluster cluster1 = menorDistancia.getCluster1();
             Cluster cluster2 = menorDistancia.getCluster2();
 
